@@ -15,7 +15,7 @@ puts "proxying for: %s:%i" % [ target_ip, target_port ]
 while true
   sok = srv.accept
   Thread.new( sok ) do |my_socket|
-    raw_inp = my_socket.readlines
+    raw_input = my_socket.readlines
     msg = HL7::Message.new( raw_input )
     puts "forwarding message:\n%s" % msg.to_s
     soc = TCPSocket.open( target_ip, target_port )
